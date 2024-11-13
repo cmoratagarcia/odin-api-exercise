@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    
+ }
+
+ div {
+    width: 30%;
+    padding: 50px;
+ }
+
+ input {
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 50px;
+    margin: 20px;
+    font-size: 20px;
+    padding: 5px 15px;
+ }
+
+ button {
+    border-radius: 5px;
+    height: 50px;
+    margin: 20px;
+    font-size: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+ }
+
+ button:hover {
+    background-color: darkgrey;
+
+ }
+
+ img {
+    width: 100%;
+ }
