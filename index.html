@@ -31,12 +31,12 @@
       function getQuery(event) {
         event.preventDefault();
         let query = searchBox.value;
-        alert(query);
+        fetchImg(query);
       }
 
-      function fetchImg() {
+      function fetchImg(keyword) {
         fetch(
-          "https://api.giphy.com/v1/gifs/translate?api_key=4a5S1DaNl4VPC0sKiIcWySgIKYKnnw1D&s=cats",
+          `https://api.giphy.com/v1/gifs/translate?api_key=4a5S1DaNl4VPC0sKiIcWySgIKYKnnw1D&s=${keyword}`,
           { mode: "cors" }
         )
           .then(function (response) {
