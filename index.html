@@ -17,12 +17,16 @@
       </form>
       <button id="new-gif">New GIF</button>
     </div>
-    <div class="result-container"><img src="#" /></div>
+    <div class="result-container">
+      <img src="#" />
+      <p class="img-error">NO IMAGE FOUND</p>
+    </div>
     <script>
       const form = document.getElementById("form");
       const searchBox = document.getElementById("search");
       const button = document.querySelector("button");
       const img = document.querySelector("img");
+      const imgError = document.querySelector(".img-error");
 
       form.addEventListener("submit", getQuery);
 
@@ -43,7 +47,24 @@
             return response.json();
           })
           .then(function (response) {
-            img.src = response.data.images.original.url;
+            if (response.meta.response_id === "") {
+              // If no GIF is found, show error message and hide image
+              img.style.display = "none";
+              imgError.style.display = "block";
+            } else {
+              console.log(response);
+              img.src = response.data.images.original.url;
+              imgError.style.display = "none";
+              img.style.display = "block";
+            }
+          })
+
+          .catch((error) => {
+            // Handle any other errors
+            console.error("Error fetching GIF:", error);
+            img.style.display = "none";
+            imgError.textContent = "An error occurred";
+            imgError.style.display = "block";
           });
       }
     </script>
