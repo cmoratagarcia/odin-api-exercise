@@ -23,10 +23,7 @@
 
       form.addEventListener("submit", getQuery);
 
-      button.addEventListener("click", function (event) {
-        event.preventDefault();
-        fetchImg();
-      });
+      button.addEventListener("click", getQuery);
 
       function getQuery(event) {
         event.preventDefault();
