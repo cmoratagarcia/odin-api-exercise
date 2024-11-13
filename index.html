@@ -5,13 +5,34 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" placeholder="Enter keyword" />
-    <button>New GIF</button>
+    <form id="form">
+      <input
+        id="search"
+        type="text"
+        class="search-box"
+        placeholder="Search for..."
+      />
+    </form>
+    <button id="new-gif">New GIF</button>
     <img src="#" />
     <script>
+      const form = document.getElementById("form");
+      const searchBox = document.getElementById("search");
       const button = document.querySelector("button");
-      button.addEventListener("click", fetchImg);
       const img = document.querySelector("img");
+
+      form.addEventListener("submit", getQuery);
+
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        fetchImg();
+      });
+
+      function getQuery(event) {
+        event.preventDefault();
+        let query = searchBox.value;
+        alert(query);
+      }
 
       function fetchImg() {
         fetch(
