@@ -5,20 +5,25 @@
     <title>Document</title>
   </head>
   <body>
+    <button>New GIF</button>
     <img src="#" />
     <script>
+      const button = document.querySelector("button");
+      button.addEventListener("click", fetchImg);
       const img = document.querySelector("img");
 
-      fetch(
-        "https://api.giphy.com/v1/gifs/translate?api_key=4a5S1DaNl4VPC0sKiIcWySgIKYKnnw1D&s=cats",
-        { mode: "cors" }
-      )
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (response) {
-          img.src = response.data.images.original.url;
-        });
+      function fetchImg() {
+        fetch(
+          "https://api.giphy.com/v1/gifs/translate?api_key=4a5S1DaNl4VPC0sKiIcWySgIKYKnnw1D&s=cats",
+          { mode: "cors" }
+        )
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (response) {
+            img.src = response.data.images.original.url;
+          });
+      }
     </script>
   </body>
 </html>
